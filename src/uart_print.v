@@ -63,7 +63,7 @@ module uart_print #(
     assign ready = (state == IDLE);
     assign uart_tx = uart_tx_wire;
 
-    // Instantiate UART_TX_CTRL (your provided VHDL module)
+    // Instantiate UART_TX_CTRL module
     UART_TX_CTRL uart_tx_inst (
         .SEND(send),
         .DATA(tx_byte),
