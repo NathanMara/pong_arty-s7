@@ -31,19 +31,7 @@ This project drives a 640×480 VGA monitor at 60 Hz, renders the ball and paddle
 
 ---
 
-## 📂 Project Structure
-├── top.v # Top-level module tying everything together
-├── pong_game.v # Pong game logic (ball, paddles, scoring, drawing)
-├── vga_controller.v # VGA timing generator (640x480 @ 60Hz)
-├── pong_uart.v # Score-to-UART interface
-├── uart_bram.v # Simple BRAM to buffer score messages
-├── uart_print.v # UART message printer (reads BRAM, sends bytes)
-├── UART_TX_CTRL.vhd # UART transmitter core (9600 baud @ 100MHz)
-
-
----
-
-## ⚙️ How It Works
+## How It Works
 
 - **Game Loop**
   - Runs on a divided clock tick (approx. 95 Hz with 100 MHz input).
@@ -61,7 +49,7 @@ This project drives a 640×480 VGA monitor at 60 Hz, renders the ball and paddle
 
 This project uses multiple FSMs to manage game logic, paddle control, and UART communication.  
 
-#### 🎮 Game FSM (Ball & Scoring)
+#### Game FSM (Ball & Scoring)
 
 ```mermaid
 stateDiagram
@@ -75,7 +63,7 @@ stateDiagram
   SCORE_P2 --> IDLE:reset
 ```
 
-#### 🏓 Paddle FSM
+#### Paddle FSM
 
 ```mermaid
 stateDiagram
@@ -86,7 +74,7 @@ stateDiagram
 
 ```
 
-#### 📡 UART Printer FSM
+#### UART Printer FSM
 
 ```mermaid
 stateDiagram
@@ -97,7 +85,7 @@ stateDiagram
     WAIT_READY_HIGH --> IDLE : finished all bytes
 ```
 
-#### 📝 Score-to-UART FSM
+#### Score-to-UART FSM
 
 ```mermaid
 stateDiagram
@@ -109,7 +97,7 @@ stateDiagram
     STATE_RESET --> STATE_IDLE : after delay
 ```
 
-#### ⏱ UART TX FSM
+#### UART TX FSM
 
 ```mermaid
 stateDiagram
